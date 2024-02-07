@@ -9,6 +9,7 @@ import org.testng.Assert;
 
 public class BasePage {
 
+   private static Object ElementType;
    public WebDriver driver;
 
    public BasePage() {
@@ -39,9 +40,10 @@ public class BasePage {
    public void isCurrentPage(String expctedURL, boolean expactedPage) {
       String currentURL = driver.getCurrentUrl();
       if (currentURL.endsWith("/")) {
-         currentURL = currentURL.substring(0,currentURL.length() - 1);
+         currentURL = currentURL.substring(0, currentURL.length() - 1);
       }
       boolean isCurrent = currentURL.equals(expctedURL);
-      Assert.assertEquals(isCurrent,expactedPage,"Current page is not expected URL");
+      Assert.assertEquals(isCurrent, expactedPage, "Current page is not expected URL");
+
    }
 }

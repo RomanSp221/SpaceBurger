@@ -6,11 +6,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import spaceBurger.HomePage;
 
+import java.io.IOException;
 import java.time.Duration;
 
 public class TestBase {
 
-   protected static WebDriver driver;
+   public static WebDriver driver;
 
 
    @BeforeMethod
@@ -21,9 +22,13 @@ public class TestBase {
       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
    }
 
-   @AfterMethod(enabled = false)
+   @AfterMethod (enabled = false)
    public void tearDown() {
       driver.quit();
+      try {
+         Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe /T");
+      } catch (IOException ignored) {
+      }
    }
 }
 

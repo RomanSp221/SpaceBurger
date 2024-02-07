@@ -6,12 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import spaceBurger.BasePage;
 import spaceBurger.HomePage;
 
-import java.time.Duration;
+public class LogoutPage extends BasePage {
+   BasePage basePage;
 
-public class LoginPage extends BasePage {
-   private static final Duration WAIT_SECONDS = Duration.ofSeconds(5);
-
-   public LoginPage(WebDriver driver) {
+   public LogoutPage(WebDriver driver) {
       super(driver);
    }
 
@@ -22,11 +20,9 @@ public class LoginPage extends BasePage {
    @FindBy(xpath = "//button[text()='Einloggen']")
    WebElement einloggenButton;
 
-
    public void clickEinloggenButton() {
       einloggenButton.click();
    }
-
    @FindBy(xpath = "//input[@type='email']")
    WebElement inputEmail;
    @FindBy(xpath = "//input[@type='password']")
@@ -35,13 +31,15 @@ public class LoginPage extends BasePage {
    public void login(String email, String password) {
       type(inputEmail, email);
       type(inputPassword, password);
-
    }
+   @FindBy(xpath = "//button[text()='Abmelden']")
+   public WebElement abmeldenButton;
 
-   @FindBy(xpath = "//div[@class='error']")
-   WebElement errorMessage;
+
+   public void clickabmeldenButton() {
+      abmeldenButton.click();
+   }
 }
-
 
 
 

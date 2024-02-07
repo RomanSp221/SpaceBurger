@@ -8,10 +8,10 @@ import spaceBurger.HomePage;
 
 import java.time.Duration;
 
-public class LoginPage extends BasePage {
+public class ProfilePage extends BasePage {
    private static final Duration WAIT_SECONDS = Duration.ofSeconds(5);
 
-   public LoginPage(WebDriver driver) {
+   public ProfilePage(WebDriver driver) {
       super(driver);
    }
 
@@ -21,7 +21,6 @@ public class LoginPage extends BasePage {
 
    @FindBy(xpath = "//button[text()='Einloggen']")
    WebElement einloggenButton;
-
 
    public void clickEinloggenButton() {
       einloggenButton.click();
@@ -38,11 +37,15 @@ public class LoginPage extends BasePage {
 
    }
 
-   @FindBy(xpath = "//div[@class='error']")
-   WebElement errorMessage;
+   @FindBy(xpath = "//a[contains(text(), 'Hi! Default')]")
+   static WebElement hiDefaultLink;
+
+
+   public static void clickhiDefaultLinkButton() {
+      hiDefaultLink.click();
+   }
+public static String ProfilePageURL(String Profile) {
+   return ProfilePage.ProfilePageURL(Profile) + "profile";
+
+   }
 }
-
-
-
-
-
